@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
 function Login({ setUsername, setIsLoggedIn }) {
   const [form, setForm] = useState({ email: '', password: '' });
   const [isRegister, setIsRegister] = useState(false);
@@ -24,7 +23,7 @@ function Login({ setUsername, setIsLoggedIn }) {
       localStorage.setItem('username', form.email);
 
       alert(isRegister ? 'Registered successfully!' : 'Logged in successfully!');
-      navigate('/');
+      navigate('/chat'); // ✅ redirect to AI page after login
     } catch (err) {
       console.error('Auth failed:', err);
       const msg = err.response?.data?.message || 'Something went wrong';
