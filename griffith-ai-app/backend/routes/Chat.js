@@ -8,10 +8,18 @@ router.post("/query", async (req, res) => {
   const { question, username } = req.body;
 
   try {
+    // Send the query to the local Flask-based LLM API
     const response = await axios.post("http://127.0.0.1:5000/query", { question });
     const answer = response.data.answer;
+    const sources = response.data.sources || [];
 
-    // Save conversation
+    // Log retrieved chunks for debug
+    console.log("📄 Retrieved source chunks:");
+    sources.forEach((src, i) => {
+      console.log(`--- Chunk ${i + 1} ---\n${src}\n`);
+    });
+
+    // Save the conversation
     const conversation = new Conversation({
       username,
       title: question.slice(0, 50),
@@ -22,9 +30,9 @@ router.post("/query", async (req, res) => {
     });
     await conversation.save();
 
-    res.json({ answer });
+    res.json({ answer, sources });
   } catch (err) {
-    console.error("Error communicating with LLM:", err.message);
+    console.error("❌ Error communicating with LLM:", err.message);
     res.status(500).json({ message: "LLM query failed" });
   }
 });
@@ -36,7 +44,7 @@ router.get("/conversations", async (req, res) => {
     const conversations = await Conversation.find({ username: userId }).sort({ createdAt: -1 });
     res.json(conversations);
   } catch (err) {
-    console.error("Error fetching conversations:", err.message);
+    console.error("❌ Error fetching conversations:", err.message);
     res.status(500).json({ message: "Failed to fetch conversations" });
   }
 });

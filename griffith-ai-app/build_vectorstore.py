@@ -5,7 +5,7 @@ from langchain_core.documents import Document
 
 # Step 1: Load text
 print("📂 Loading the prospectus text...")
-with open("griffith_college_prospectus_2025_cleaned.txt", "r", encoding="utf-8") as f:
+with open("griffith_main.txt", "r", encoding="utf-8") as f:
     text = f.read()
 
 # Step 2: Split text into chunks

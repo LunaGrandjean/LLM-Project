@@ -1,4 +1,3 @@
-// App.js (updated for homepage routing and Griffith.ie style)
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import logo from './assets/griffith-white.png';
@@ -10,11 +9,20 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="home-wrapper">
-      <div className="home-hero">
-        <h1>Welcome to Griffith AI</h1>
-        <p>Your virtual guide to Griffith College information.</p>
-        <button onClick={() => navigate('/login')}>Get Started</button>
+    <div className="home-video-section">
+      {/* 🎥 Video background */}
+      <video autoPlay muted loop playsInline className="video-background">
+        <source src="/home-video.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* 🌫️ Overlay content */}
+      <div className="video-overlay-content">
+        <h1 className="home-title">Welcome to Griffith AI</h1>
+        <p className="home-subtitle">Your virtual guide to Griffith College information.</p>
+        <button className="home-btn" onClick={() => navigate('/login')}>
+          Get Started
+        </button>
       </div>
     </div>
   );
