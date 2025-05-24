@@ -4,19 +4,20 @@ import logo from './assets/griffith-white.png';
 import './App.css';
 import Login from './components/Login';
 import Chat from './components/Chat';
+import Footer from './components/Footer';
+import HowItWorks from './components/HowItWorks';
+import About from './components/About';
 
 function HomePage() {
   const navigate = useNavigate();
 
   return (
     <div className="home-video-section">
-      {/* 🎥 Video background */}
       <video autoPlay muted loop playsInline className="video-background">
         <source src="/home-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
-      {/* 🌫️ Overlay content */}
       <div className="video-overlay-content">
         <h1 className="home-title">Welcome to Griffith AI</h1>
         <p className="home-subtitle">Your virtual guide to Griffith College information.</p>
@@ -49,10 +50,19 @@ function App() {
   return (
     <div className="app">
       <header className="griffith-header">
-        <h1 className="griffith-title">
+        <div className="header-left">
           <img src={logo} alt="Griffith Logo" className="griffith-logo" />
-          Griffith AI
-        </h1>
+
+          <nav className="nav-links">
+            <a href="/" className="nav-link">Home</a>
+            <a href="/how-it-works" className="nav-link">How it Works</a>
+            <a href="/about" className="nav-link">About Us</a>
+            {isLoggedIn && (
+              <a href="/chat" className="nav-link">Conversations</a>
+            )}
+          </nav>
+        </div>
+
         <div className="header-right">
           {isLoggedIn ? (
             <button className="griffith-btn" onClick={handleLogout}>Logout</button>
@@ -62,18 +72,15 @@ function App() {
         </div>
       </header>
 
-
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login setUsername={setUsername} setIsLoggedIn={setIsLoggedIn} />} />
         <Route path="/chat" element={isLoggedIn ? <Chat username={username} /> : <HomePage />} />
+        <Route path="/how-it-works" element={<HowItWorks />} />
+        <Route path="/about" element={<About />} />
       </Routes>
 
-      <footer className="griffith-footer">
-        <div className="container">
-          © 2025 Griffith AI — Project by Luna Grandjean and Maia Jouenne
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

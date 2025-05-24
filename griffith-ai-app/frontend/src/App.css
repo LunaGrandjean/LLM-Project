@@ -31,6 +31,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 999;
+  flex-wrap: wrap;
 }
 
 .griffith-title {
@@ -65,6 +66,31 @@ body {
 
 .griffith-btn:hover {
   background-color: #ffe2e2;
+}
+
+.griffith-site-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffe2e2;
 }
 
 /* -------------------------- */
