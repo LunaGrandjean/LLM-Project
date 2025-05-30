@@ -329,20 +329,30 @@ footer {
 }
 
 /* -------------------------- */
-/* 🔻 SIDEBAR                 */
+/* 🔻 SIDEBAR - Improved      */
 /* -------------------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
 .main-layout {
   display: flex;
+  min-height: 100vh;           /* Ensures at least full screen height */
+  align-items: stretch;        /* Children (sidebar and content) stretch together */
 }
 
 .sidebar {
-  width: 250px;
-  background-color: #b31b1b;   
+  flex: 0 0 250px;             /* Fixed width of 250px */
+  background-color: #b31b1b;
   color: white;
   padding: 1rem;
-  height: 100vh;
-  overflow-y: auto;
+  height: auto;                /* Let it grow naturally */
+  min-height: 100%;            /* Stretch to match content height */
+  overflow-y: auto;            /* Scroll inside the sidebar if needed */
   border-right: 3px solid #860d0d;
+  display: flex;
+  flex-direction: column;      /* Stack items vertically */
 }
 
 .conversation-item {
