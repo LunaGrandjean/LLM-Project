@@ -73,12 +73,17 @@ body {
   font-weight: bold;
 }
 
+
+.header-left {
+  display: flex;              /* Make it a flex container */
+  align-items: center;        /* Vertically align items */
+  gap: 2rem;                  /* Space between logo and links */
+}
+
 .nav-links {
   display: flex;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+  gap: 1.5rem;
+  align-items: center;        /* Align links in the middle with the logo */
 }
 
 .nav-link {
@@ -87,11 +92,13 @@ body {
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.3s ease;
+  padding: 0 0.5rem;          /* Add a bit of padding for clickability */
 }
 
 .nav-link:hover {
   color: #ffe2e2;
 }
+
 
 /* -------------------------- */
 /* 📄 MAIN CONTENT            */
@@ -420,4 +427,262 @@ footer {
 
 .home-btn:hover {
   background-color: #8d1515;
+}
+
+/* 🌟 ABOUT US – General Layout */
+.about-us-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 60px 20px;
+  background-color: #f9f9fb;
+  flex-wrap: nowrap; /* 🔥 Pas de retour à la ligne sauf petit écran */
+}
+
+@media (max-width: 1000px) {
+  .about-us-wrapper {
+    flex-wrap: wrap; /* 🔥 Passe en colonne sur petit écran */
+    gap: 30px;
+  }
+}
+
+.section-box {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 300px; /* Largeur flexible avec minimum */
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.section-heading {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-align: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+}
+
+/* 🌟 TEAM MEMBER CARDS */
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.team-member {
+  background: linear-gradient(135deg, #fff 0%, #f9f9fb 100%);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid var(--accent-color);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.team-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 4px solid var(--accent-color);
+}
+
+.team-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-color);
+  margin-bottom: 5px;
+}
+
+.team-role {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.bio-text {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 12px;
+}
+
+.github-link {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  gap: 6px;
+}
+
+.github-link:hover {
+  background-color: #b31b1b;
+}
+
+/* 🌟 CAMPUS CARDS */
+.campus-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.campus-card {
+  background: linear-gradient(135deg, #fff 0%, #f1f1f1 100%);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  border-left: 5px solid var(--accent-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campus-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.campus-card h4 {
+  font-size: 18px;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
+
+.campus-card p {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.campus-card iframe {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* 🌟 CONTACT FORM */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.contact-form select,
+.contact-form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.contact-form button {
+  background-color: var(--accent-color);
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+  background-color: #b31b1b;
+}
+
+/* 🌟 Git Hub (redundant but ensures consistent style) */
+.github-link {
+  color: white;
+  background-color: #222;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color var(--transition-speed);
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.github-link:hover {
+  background-color: #444;
+}
+/* 🌟 HOW IT WORKS GENERAL LAYOUT */
+.how-it-works-wrapper {
+  padding: 40px 20px;
+  background-color: #f9f9fb;
+  text-align: center;
+}
+
+.hiw-heading {
+  font-size: 32px;
+  font-weight: bold;
+  color: #c8102e; /* Griffith Red */
+  margin-bottom: 40px;
+}
+
+.hiw-steps {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.hiw-step {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hiw-step:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hiw-icon {
+  font-size: 40px;
+  color: #c8102e; /* Griffith Red */
+  margin-bottom: 15px;
+}
+
+.hiw-step h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #c8102e; /* Griffith Red */
+  margin-bottom: 10px;
+}
+
+.hiw-step p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
 }

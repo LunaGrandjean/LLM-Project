@@ -8,7 +8,7 @@ app = Flask(__name__)
 # Load FAISS and LLM
 embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3")
 vectorstore = FAISS.load_local("vectorDb", embeddings, allow_dangerous_deserialization=True)
-retriever = vectorstore.as_retriever(search_kwargs={"k": 15})  # 6 chunks
+retriever = vectorstore.as_retriever(search_kwargs={"k": 4})  # 6 chunks
 llm = Ollama(base_url="http://localhost:11434", model="llama3")
 
 @app.route("/query", methods=["POST"])
