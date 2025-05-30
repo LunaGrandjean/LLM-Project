@@ -1,46 +1,49 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import Sidebar from './Sidebar';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import ReactMarkdown from "react-markdown";
+import Sidebar from "./Sidebar";
 
 function Chat({ username }) {
   const [messages, setMessages] = useState([]);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState("");
   const [loading, setLoading] = useState(false);
   const [conversations, setConversations] = useState([]);
   const [activeConversationId, setActiveConversationId] = useState(null);
 
+  /* ─────────── load conversation list ─────────── */
   useEffect(() => {
-    const fetchConversations = async () => {
-      const res = await axios.get('http://localhost:8000/api/chat/conversations', {
-        params: { userId: username },
-      });
+    (async () => {
+      const res = await axios.get(
+        "http://localhost:8000/api/chat/conversations",
+        { params: { userId: username } }
+      );
       setConversations(res.data);
-    };
-    fetchConversations();
+    })();
   }, [username]);
 
+  /* ─────────── send question ─────────── */
   const handleSend = async () => {
     if (!question.trim()) return;
 
-    const userMsg = { sender: 'user', text: question };
+    const userMsg = { sender: "user", text: question };
     const updatedMessages = [...messages, userMsg];
     setMessages(updatedMessages);
-    setQuestion('');
+    setQuestion("");
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8000/api/chat/query', {
+      const res = await axios.post("http://localhost:8000/api/chat/query", {
         username,
         question,
         conversationId: activeConversationId,
       });
 
-      const aiMsg = { sender: 'ai', text: res.data.answer };
+      const aiMsg = { sender: "ai", text: res.data.answer };
       const newMessages = [...updatedMessages, aiMsg];
       setMessages(newMessages);
 
       if (!activeConversationId && res.data.conversationId) {
-        // This was a new chat
+        // new chat
         setActiveConversationId(res.data.conversationId);
         setConversations((prev) => [
           {
@@ -51,12 +54,12 @@ function Chat({ username }) {
           ...prev,
         ]);
       } else {
-        // Updating existing conversation
+        // existing chat
         setConversations((prev) =>
-          prev.map((conv) =>
-            conv._id === res.data.conversationId
-              ? { ...conv, messages: newMessages }
-              : conv
+          prev.map((c) =>
+            c._id === res.data.conversationId
+              ? { ...c, messages: newMessages }
+              : c
           )
         );
       }
@@ -64,7 +67,7 @@ function Chat({ username }) {
       console.error(err);
       setMessages((prev) => [
         ...prev,
-        { sender: 'ai', text: '⚠️ Something went wrong. Please try again.' },
+        { sender: "ai", text: "⚠️ Something went wrong. Please try again." },
       ]);
     } finally {
       setLoading(false);
@@ -72,9 +75,10 @@ function Chat({ username }) {
   };
 
   const handleEnter = (e) => {
-    if (e.key === 'Enter') handleSend();
+    if (e.key === "Enter") handleSend();
   };
 
+  /* ─────────── sidebar helpers ─────────── */
   const handleSelectConversation = (conv) => {
     if (!conv || !conv.messages) return;
     setMessages(conv.messages);
@@ -87,20 +91,24 @@ function Chat({ username }) {
   };
 
   const handleDeleteConversation = async (id) => {
-    await axios.delete(`http://localhost:8000/api/chat/conversations/${id}`);
+    await axios.delete(
+      `http://localhost:8000/api/chat/conversations/${id}`
+    );
     setConversations((prev) => prev.filter((c) => c._id !== id));
-    if (activeConversationId === id) {
-      handleNewConversation();
-    }
+    if (activeConversationId === id) handleNewConversation();
   };
 
   const handleRenameConversation = async (id, newTitle) => {
-    const res = await axios.put(`http://localhost:8000/api/chat/conversations/${id}`, { title: newTitle });
+    const res = await axios.put(
+      `http://localhost:8000/api/chat/conversations/${id}`,
+      { title: newTitle }
+    );
     setConversations((prev) =>
       prev.map((c) => (c._id === id ? { ...c, title: res.data.title } : c))
     );
   };
 
+  /* ─────────── render ─────────── */
   return (
     <div className="main-layout">
       <Sidebar
@@ -114,6 +122,8 @@ function Chat({ username }) {
 
       <main className="chat-main">
         <h2>Ask something about Griffith College</h2>
+
+        {/* input */}
         <div className="input-area">
           <input
             type="text"
@@ -125,10 +135,15 @@ function Chat({ username }) {
           <button onClick={handleSend}>➤</button>
         </div>
 
+        {/* messages */}
         <div className="chat-container">
           {messages.map((msg, i) => (
             <div key={i} className={`message ${msg.sender}`}>
-              {msg.text}
+              {msg.sender === "ai" ? (
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
+              ) : (
+                msg.text
+              )}
             </div>
           ))}
           {loading && <div className="message ai">💬 Thinking...</div>}
