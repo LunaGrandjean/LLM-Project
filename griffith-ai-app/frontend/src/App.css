@@ -184,6 +184,9 @@ main h2 {
   align-self: flex-start;
   background-color: #fff4f4;
   border: 1px solid #b31b1b;
+  text-align: left;
+  padding-left: 1rem;
+
 }
 
 /* -------------------------- */
