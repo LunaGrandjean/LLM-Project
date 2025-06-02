@@ -369,6 +369,39 @@ html, body {
   background: #ffe2e2;
 }
 
+.rename-input {
+  flex-grow: 1;
+  padding: 5px 8px;
+  border: 2px solid #b31b1b;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.rename-input:focus {
+  border-color: #860d0d;
+  box-shadow: 0 0 5px rgba(179, 27, 27, 0.5);
+}
+
+.rename-buttons {
+  display: flex;
+  gap: 4px;
+}
+
+.rename-btn {
+  background-color: #28a745; /* vert pour valider */
+  border: none;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.rename-btn.cancel {
+  background-color: #dc3545; /* rouge pour annuler */
+}
+
 
 /* -------------------------- */
 /* ✨ HOMEPAGE ENHANCEMENTS    */

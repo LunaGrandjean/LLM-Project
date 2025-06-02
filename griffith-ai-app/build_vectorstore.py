@@ -21,7 +21,7 @@ docs = [Document(page_content=t, metadata=m) for t, m in zip(texts, metadatas)]
 
 # Step 4: Create embeddings
 print("🧠 Generating embeddings using Ollama...")
-embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3")
+embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3.2:3b")
 
 # Step 5: Create FAISS vectorstore
 print("📦 Creating FAISS vectorstore...")

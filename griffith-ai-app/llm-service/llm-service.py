@@ -6,10 +6,10 @@ from langchain_community.llms import Ollama
 app = Flask(__name__)
 
 # Load FAISS and LLM
-embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3")
+embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3.2:3b")
 vectorstore = FAISS.load_local("vectorDb", embeddings, allow_dangerous_deserialization=True)
-retriever = vectorstore.as_retriever(search_kwargs={"k": 4})  # 6 chunks
-llm = Ollama(base_url="http://localhost:11434", model="llama3")
+retriever = vectorstore.as_retriever(search_kwargs={"k": 8})  # 8 chunks
+llm = Ollama(base_url="http://localhost:11434", model="llama3.2:3b")
 
 @app.route("/query", methods=["POST"])
 def query():
