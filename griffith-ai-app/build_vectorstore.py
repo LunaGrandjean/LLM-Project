@@ -20,8 +20,13 @@ metadatas = [{"source": f"{i}-griffith_college_prospectus_2025_cleaned.txt"} for
 docs = [Document(page_content=t, metadata=m) for t, m in zip(texts, metadatas)]
 
 # Step 4: Create embeddings
+<<<<<<< Updated upstream
 print("Generating embeddings using Ollama...")
 embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3.2:3b")
+=======
+print("🧠 Generating embeddings using Ollama...")
+embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3:latest")
+>>>>>>> Stashed changes
 
 # Step 5: Create FAISS vectorstore
 print("Creating FAISS vectorstore...")

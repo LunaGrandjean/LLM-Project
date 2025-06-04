@@ -5,8 +5,13 @@ from langchain_community.llms import Ollama
 
 app = Flask(__name__)
 
+<<<<<<< Updated upstream
 # Initialize embeddings and vectorstore using Ollama LLM
 embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3.2:3b")
+=======
+# Load FAISS and LLM
+embeddings = OllamaEmbeddings(base_url="http://localhost:11434", model="llama3")
+>>>>>>> Stashed changes
 vectorstore = FAISS.load_local("vectorDb", embeddings, allow_dangerous_deserialization=True)
 retriever = vectorstore.as_retriever(search_kwargs={"k": 8})  # Retrieve 8 most relevant chunks
 llm = Ollama(base_url="http://localhost:11434", model="llama3.2:3b")
