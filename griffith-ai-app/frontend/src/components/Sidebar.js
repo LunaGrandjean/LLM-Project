@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// Sidebar component displays a list of user conversations and allows interaction
 function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConversation }) {
-  const [conversations, setConversations] = useState([]);
-  const [editingId, setEditingId] = useState(null);
-  const [newTitle, setNewTitle] = useState('');
+  const [conversations, setConversations] = useState([]); // Store list of conversations
+  const [editingId, setEditingId] = useState(null);        // Track which conversation is being renamed
+  const [newTitle, setNewTitle] = useState('');            // New title input
 
+  // Fetch conversations on component mount or when userId changes
   useEffect(() => {
     if (userId) {
       axios
@@ -15,22 +17,24 @@ function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConv
     }
   }, [userId]);
 
+  // Handle deletion of a conversation
   const handleDelete = async (id, e) => {
-    e.stopPropagation(); // prevent onClick from triggering
-    if (window.confirm("Delete this conversation ?")) {
+    e.stopPropagation(); // Prevent triggering parent click event
+    if (window.confirm("Delete this conversation?")) {
       try {
         await axios.delete(`http://localhost:8000/api/chat/conversations/${id}`);
         setConversations((prev) => prev.filter((conv) => conv._id !== id));
-        onDeleteConversation(id); // notify parent
+        onDeleteConversation(id); // Notify parent to clear if active
       } catch (err) {
         console.error('Failed to delete conversation', err);
       }
     }
   };
 
+  // Handle renaming a conversation
   const handleRename = async (id) => {
     if (newTitle.trim() === '') {
-      alert("Le nouveau titre ne peut pas être vide.");
+      alert("The new title cannot be empty.");
       return;
     }
     try {
@@ -45,9 +49,12 @@ function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConv
     }
   };
 
+  // Render component
   return (
     <div className="sidebar" style={{ backgroundColor: '#b31b1b', color: 'white' }}>
       <h3>Your Conversations</h3>
+
+      {/* Button to start a new chat */}
       <div
         className="conversation-item"
         onClick={() => {
@@ -67,6 +74,7 @@ function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConv
         + New Chat
       </div>
 
+      {/* List of conversations */}
       {conversations.map((conv) => (
         <div
           key={conv._id}
@@ -84,6 +92,7 @@ function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConv
             cursor: 'pointer',
           }}
         >
+          {/* If renaming, show input field */}
           {editingId === conv._id ? (
             <>
               <input
@@ -113,9 +122,11 @@ function Sidebar({ userId, onSelectConversation, onNewConversation, onDeleteConv
               </div>
             </>
           ) : (
-
             <>
+              {/* Conversation title */}
               <span style={{ flexGrow: 1 }}>{conv.title || 'Untitled'}</span>
+
+              {/* Buttons for delete and rename */}
               <div style={{ display: 'flex', gap: '5px' }}>
                 <button
                   onClick={(e) => handleDelete(conv._id, e)}
