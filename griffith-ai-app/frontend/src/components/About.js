@@ -1,10 +1,11 @@
-import "../App.css";
-import luna from "../assets/luna.jpg";
-import maia from "../assets/maia.jpg";
-import { FaGithub } from "react-icons/fa";
-import emailjs from "@emailjs/browser";
-import { useState } from "react";
+import "../App.css"; // Import global styles
+import luna from "../assets/luna.jpg"; // Team member image
+import maia from "../assets/maia.jpg"; // Team member image
+import { FaGithub } from "react-icons/fa"; // GitHub icon
+import emailjs from "@emailjs/browser"; // Email sending service
+import { useState } from "react"; // React hook for managing state
 
+// Array of team members with their details
 const teamMembers = [
   {
     name: "Luna Grandjean",
@@ -22,52 +23,61 @@ const teamMembers = [
   },
 ];
 
+// Array of campus details with map embed links
 const campuses = [
   {
     name: "Dublin Main Campus",
     address: "South Circular Road, Dublin 8",
-    mapLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.781567775462!2d-6.2785764!3d53.331376!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670c1833b915c7%3A0x4f83acae16f5062e!2sGriffith%20College%20Dublin!5e0!3m2!1sen!2sie!4v1716791903435!5m2!1sen!2sie",
+    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
   },
   {
     name: "Limerick Campus",
     address: "O'Connell Avenue, Limerick",
-    mapLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.781567775462!2d-8.6326533!3d52.6582407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x485b5c6f6cf6c13d%3A0xd8aa43fdbccad897!2sGriffith%20College%20Limerick!5e0!3m2!1sen!2sie!4v1716791968311!5m2!1sen!2sie",
+    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
   },
   {
     name: "Cork Campus",
     address: "Wellington Road, Cork",
-    mapLink: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.781567775462!2d-8.4612759!3d51.9032607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4844901a45d86009%3A0x6accbdef49adec91!2sGriffith%20College%20Cork!5e0!3m2!1sen!2sie!4v1716792026845!5m2!1sen!2sie",
+    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
   },
 ];
 
+// AboutUs component definition
 const AboutUs = () => {
+  // State hooks for contact form fields
   const [selectedRecipient, setSelectedRecipient] = useState("luna.grandjean@student.griffith.ie");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
+  // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const serviceID = "service_jb2yslr";  // Ton service EmailJS Outlook
-    const templateID = "template_zvkg1tv";  // Ton template EmailJS
-    const publicKey = "wGjO7lySlXyHjpdnc"; // Ta clé publique EmailJS
+    e.preventDefault(); // Prevent page reload on form submit
 
+    // EmailJS configuration
+    const serviceID = "service_jb2yslr";   // EmailJS service ID
+    const templateID = "template_zvkg1tv"; // EmailJS template ID
+    const publicKey = "wGjO7lySlXyHjpdnc"; // EmailJS public key
+
+    // Template parameters passed to EmailJS
     const templateParams = {
-      to_email: selectedRecipient,    // Destinataire (Luna ou Maia)
-      from_name: name,                // Nom de l'expéditeur
-      reply_to: email,                // Email de l'expéditeur (pour les réponses)
-      message: message,               // Contenu du message
+      to_email: selectedRecipient,
+      from_name: name,
+      reply_to: email,
+      message: message,
     };
 
+    // Send the email using EmailJS
     emailjs.send(serviceID, templateID, templateParams, publicKey)
       .then(() => {
-        alert("Message sent! 🎉");
+        alert("Message sent!");
+        // Reset form fields after successful send
         setName("");
         setEmail("");
         setMessage("");
       })
       .catch((err) => {
-        alert("Something went wrong 😥");
+        alert("Something went wrong");
         console.error(err);
       });
   };
@@ -75,10 +85,11 @@ const AboutUs = () => {
   return (
     <div className="about-us-wrapper">
 
-      {/* 🌟 Our Team Section */}
+      {/* Our Team Section */}
       <div className="section-box">
         <h2 className="section-heading">Our Team</h2>
         <div className="team-grid">
+          {/* Loop through team members and display their cards */}
           {teamMembers.map((member, idx) => (
             <div key={idx} className="team-member">
               <img src={member.image} alt={member.name} className="team-photo" />
@@ -93,10 +104,11 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* 🌟 Our Locations Section */}
+      {/* Our Locations Section */}
       <div className="section-box">
         <h2 className="section-heading">Our Locations</h2>
         <div className="campus-grid">
+          {/* Loop through campus details and embed Google Maps */}
           {campuses.map((campus, idx) => (
             <div key={idx} className="campus-card">
               <h4>{campus.name}</h4>
@@ -116,14 +128,16 @@ const AboutUs = () => {
         </div>
       </div>
 
-      {/* 🌟 Contact Our Team Section */}
+      {/* Contact Our Team Section */}
       <div className="section-box">
         <h2 className="section-heading">Contact Our Team</h2>
         <form className="contact-form" onSubmit={handleSubmit}>
+          {/* Dropdown for selecting recipient */}
           <select value={selectedRecipient} onChange={(e) => setSelectedRecipient(e.target.value)} required>
             <option value="luna.grandjean@student.griffith.ie">Luna</option>
             <option value="maia.jouenne@student.griffith.ie">Maia</option>
           </select>
+          {/* Input fields for name and email */}
           <input
             type="text"
             placeholder="Your Name"
@@ -138,6 +152,7 @@ const AboutUs = () => {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {/* Textarea for the message */}
           <textarea
             placeholder="Enter your message"
             rows={4}
@@ -145,6 +160,7 @@ const AboutUs = () => {
             onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
+          {/* Submit button */}
           <button type="submit">Send Message</button>
         </form>
       </div>
