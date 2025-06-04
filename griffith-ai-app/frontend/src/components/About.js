@@ -28,17 +28,17 @@ const campuses = [
   {
     name: "Dublin Main Campus",
     address: "South Circular Road, Dublin 8",
-    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
+    mapLink: "https://www.google.com/maps/place/Griffith+College+Dublin+Main+Campus/@53.3313792,-6.2811513,17z/data=!3m1!4b1!4m6!3m5!1s0x48670c1833b915c7:0x4f83acae16f5062e!8m2!3d53.331376!4d-6.2785764!16zL20vMDcwejdw?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     name: "Limerick Campus",
     address: "O'Connell Avenue, Limerick",
-    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
+    mapLink: "https://www.google.com/maps/place/Griffith+College+Limerick/@52.6582439,-8.6352282,17z/data=!3m1!4b1!4m6!3m5!1s0x485b5c6f6cf6c13d:0xd8aa43fdbccad897!8m2!3d52.6582407!4d-8.6326533!16s%2Fm%2F02r5s2x?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
   },
   {
     name: "Cork Campus",
     address: "Wellington Road, Cork",
-    mapLink: "https://www.google.com/maps/embed?pb=... (shortened)",
+    mapLink: "https://www.google.com/maps/place/Griffith+College+Cork/@51.903264,-8.4638508,17z/data=!3m1!4b1!4m6!3m5!1s0x4844901a45d86009:0x6accbdef49adec91!8m2!3d51.9032607!4d-8.4612759!16zL20vMGdzbGt3?entry=ttu&g_ep=EgoyMDI1MDYwMi4wIKXMDSoASAFQAw%3D%3D",
   },
 ];
 
