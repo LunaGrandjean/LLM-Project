@@ -1,5 +1,5 @@
 /* ---------------------- */
-/* 🎓 RESET & GLOBALS     */
+/* RESET & GLOBALS        */
 /* ---------------------- */
 html,
 body,
@@ -18,7 +18,7 @@ body {
 }
 
 /* -------------------------- */
-/* 🔺 HEADER STYLE            */
+/* HEADER STYLE               */
 /* -------------------------- */
 .griffith-header {
   display: flex;
@@ -73,7 +73,6 @@ body {
   font-weight: bold;
 }
 
-
 .header-left {
   display: flex;              /* Make it a flex container */
   align-items: center;        /* Vertically align items */
@@ -99,9 +98,8 @@ body {
   color: #ffe2e2;
 }
 
-
 /* -------------------------- */
-/* 📄 MAIN CONTENT            */
+/* MAIN CONTENT               */
 /* -------------------------- */
 main {
   flex: 1;
@@ -111,7 +109,7 @@ main {
 }
 
 /* -------------------------- */
-/* 💬 QUESTION INPUT BAR      */
+/* QUESTION INPUT BAR         */
 /* -------------------------- */
 main h2 {
   font-size: 1.6rem;
@@ -154,7 +152,7 @@ main h2 {
 }
 
 /* -------------------------- */
-/* 💬 CHAT CONTAINER          */
+/* CHAT CONTAINER             */
 /* -------------------------- */
 .chat-container {
   display: flex;
@@ -186,11 +184,10 @@ main h2 {
   border: 1px solid #b31b1b;
   text-align: left;
   padding-left: 1rem;
-
 }
 
 /* -------------------------- */
-/* 📦 FOOTER                  */
+/* FOOTER                     */
 /* -------------------------- */
 footer {
   background-color: #b31b1b;
@@ -203,7 +200,7 @@ footer {
 }
 
 /* -------------------------- */
-/* 🔻 SCROLLBAR MINIMAL       */
+/* SCROLLBAR MINIMAL          */
 /* -------------------------- */
 .chat-container::-webkit-scrollbar {
   width: 6px;
@@ -218,7 +215,7 @@ footer {
   background: #fff;
 }
 
-/* 🎓 FORMULAIRE PRINCIPAL */
+/* FORM MAIN */
 .form {
   display: flex;
   flex-direction: column;
@@ -231,18 +228,18 @@ footer {
   border-top: 5px solid #b31b1b;
 }
 
-/* 📝 PLACEHOLDER */
+/* PLACEHOLDER */
 ::placeholder {
   color: #999;
 }
 
-/* 🔤 LABELS */
+/* LABELS */
 .flex-column > label {
   color: #151717;
   font-weight: 600;
 }
 
-/* 🔳 INPUT CONTAINER */
+/* INPUT CONTAINER */
 .inputForm {
   border: 1.5px solid #ecedec;
   border-radius: 10px;
@@ -253,7 +250,7 @@ footer {
   transition: border 0.2s ease-in-out;
 }
 
-/* 🧾 INPUT CHAMP */
+/* INPUT FIELD */
 .input {
   margin-left: 10px;
   border-radius: 10px;
@@ -271,7 +268,7 @@ footer {
   border: 1.5px solid #b31b1b;
 }
 
-/* 🧍 FLEX EN LIGNE */
+/* FLEX ROW */
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -279,8 +276,7 @@ footer {
   justify-content: space-between;
 }
 
-
-/* ✅ BOUTON DE SOUMISSION */
+/* SUBMIT BUTTON */
 .button-submit {
   margin-top: 20px;
   background-color: #b31b1b;
@@ -299,7 +295,7 @@ footer {
   background-color: #861212;
 }
 
-/* 🧾 PARAGRAPHES INFO */
+/* PARAGRAPH INFO */
 .p {
   text-align: center;
   color: #333;
@@ -307,14 +303,14 @@ footer {
   margin: 10px 0 5px 0;
 }
 
-/* App layout wrapper */
+/* APP LAYOUT WRAPPER */
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-/* Centering the login container */
+/* CENTER LOGIN CONTAINER */
 .login-wrapper {
   display: flex;
   justify-content: center;
@@ -329,7 +325,7 @@ footer {
 }
 
 /* -------------------------- */
-/* 🔻 SIDEBAR - Improved      */
+/* SIDEBAR - IMPROVED         */
 /* -------------------------- */
 html, body {
   height: 100%;
@@ -390,7 +386,7 @@ html, body {
 }
 
 .rename-btn {
-  background-color: #28a745; /* vert pour valider */
+  background-color: #28a745; /* green for confirm */
   border: none;
   color: white;
   padding: 4px 6px;
@@ -399,12 +395,11 @@ html, body {
 }
 
 .rename-btn.cancel {
-  background-color: #dc3545; /* rouge pour annuler */
+  background-color: #dc3545; /* red for cancel */
 }
 
-
 /* -------------------------- */
-/* ✨ HOMEPAGE ENHANCEMENTS    */
+/* HOMEPAGE ENHANCEMENTS       */
 /* -------------------------- */
 .home-video-section {
   position: relative;
@@ -424,7 +419,7 @@ html, body {
   pointer-events: none;
 }
 
-/* 🌫️ Overlay with content centered over the video */
+/* Overlay with centered content on video */
 .video-overlay-content {
   position: relative;
   z-index: 1;
@@ -467,16 +462,18 @@ html, body {
   background-color: #8d1515;
 }
 
-/* 🌟 ABOUT US – General Layout */
+/* -------------------------- */
+/* ABOUT US SECTION            */
+/* -------------------------- */
 .about-us-wrapper {
   display: flex;
-  flex-direction: column; /* 🔥 Stack sections vertically */
-  gap: 60px; /* Space between sections */
+  flex-direction: column; /* Stack sections vertically */
+  gap: 60px;
   padding: 60px 20px;
   background-color: #f9f9fb;
 }
 
-/* 🌟 Section Boxes – Full Width */
+/* Section box for About Us */
 .section-box {
   background-color: #fff;
   border-radius: 15px;
@@ -490,21 +487,22 @@ html, body {
 .section-heading {
   font-size: 28px;
   font-weight: bold;
-  color: #b31b1b; /* Griffith Red */
+  color: #b31b1b;
   text-align: center;
   margin-bottom: 20px;
   border-bottom: 2px solid #b31b1b;
   padding-bottom: 10px;
 }
 
-/* 🌟 TEAM GRID – Row of Cards Inside Our Team Section */
+/* Team members grid */
 .team-grid {
   display: flex;
-  flex-wrap: wrap; /* Cards wrap on smaller screens */
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
+/* Individual team member card */
 .team-member {
   background: linear-gradient(135deg, #fff 0%, #f9f9fb 100%);
   border-radius: 15px;
@@ -567,10 +565,10 @@ html, body {
   background-color: #8a1414;
 }
 
-/* 🌟 CAMPUS GRID – Row of Maps Inside Our Locations Section */
+/* Campus location grid */
 .campus-grid {
   display: flex;
-  flex-wrap: wrap; /* Allow wrap on small screens */
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
@@ -609,7 +607,7 @@ html, body {
   border: none;
 }
 
-/* 🌟 CONTACT FORM – Centered in Its Section */
+/* Contact form styling */
 .contact-form {
   background: #fff;
   border-radius: 15px;
@@ -634,7 +632,7 @@ html, body {
 .contact-form input:focus,
 .contact-form textarea:focus,
 .contact-form select:focus {
-  border-color: #b31b1b; /* Rouge doux */
+  border-color: #b31b1b;
   box-shadow: 0 0 5px rgba(179, 27, 27, 0.3);
 }
 
@@ -654,6 +652,7 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* Section heading inside contact form */
 .section-heading {
   font-size: 28px;
   font-weight: bold;
@@ -664,8 +663,9 @@ html, body {
   padding-bottom: 10px;
 }
 
-
-/* 🌟 HOW IT WORKS GENERAL LAYOUT */
+/* -------------------------- */
+/* HOW IT WORKS SECTION        */
+/* -------------------------- */
 .how-it-works-wrapper {
   padding: 40px 20px;
   background-color: #f9f9fb;
@@ -675,7 +675,7 @@ html, body {
 .hiw-heading {
   font-size: 32px;
   font-weight: bold;
-  color: #b31b1b; 
+  color: #b31b1b;
   margin-bottom: 40px;
 }
 
@@ -704,14 +704,14 @@ html, body {
 
 .hiw-icon {
   font-size: 40px;
-  color: #b31b1b; 
+  color: #b31b1b;
   margin-bottom: 15px;
 }
 
 .hiw-step h3 {
   font-size: 20px;
   font-weight: bold;
-  color: #b31b1b; 
+  color: #b31b1b;
   margin-bottom: 10px;
 }
 
